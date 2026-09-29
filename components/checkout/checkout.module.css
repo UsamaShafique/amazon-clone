@@ -1,0 +1,291 @@
+.header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+.headerInner {
+  max-width: 1100px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+
+.headerTitle {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.headerTitle a {
+  color: var(--link);
+  font-size: 14px;
+}
+
+.lock {
+  font-size: 20px;
+  color: var(--text-secondary);
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  padding: 14px 16px 4px;
+  max-width: 720px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  position: relative;
+  padding-top: 26px;
+}
+
+.step::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  right: -50%;
+  height: 2px;
+  background: var(--border);
+}
+
+.step:last-child::before {
+  display: none;
+}
+
+.stepDot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--border-dark);
+  color: var(--text-secondary);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.stepActive {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.stepActive .stepDot {
+  border-color: var(--btn-orange);
+  background: var(--btn-orange);
+  color: #fff;
+}
+
+.stepDone .stepDot {
+  border-color: var(--success);
+  background: var(--success);
+  color: #fff;
+}
+
+.stepDone::before {
+  background: var(--success);
+}
+
+/* Layout */
+.main {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: 18px 16px 60px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 20px;
+  align-items: start;
+  width: 100%;
+}
+
+.mainSingle {
+  max-width: 760px;
+  margin-inline: auto;
+  padding: 24px 16px 60px;
+  width: 100%;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin-bottom: 16px;
+}
+
+.panelTitle {
+  font-size: 19px;
+  margin-bottom: 14px;
+}
+
+.optionRow {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 13.5px;
+}
+
+.optionSelected {
+  border-color: var(--btn-orange);
+  background: #fff8ec;
+}
+
+.optionBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.optionName {
+  font-weight: 700;
+}
+
+.addNew {
+  background: none;
+  border: none;
+  color: var(--link);
+  font-size: 14px;
+  padding: 4px 0;
+  margin-bottom: 10px;
+}
+
+.addNew:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* Summary sidebar */
+.summary {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  position: sticky;
+  top: 14px;
+}
+
+.summaryRows {
+  font-size: 13.5px;
+  border-bottom: 1px solid #e7e7e7;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+}
+
+.summaryTotalRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--price-red);
+  margin-bottom: 12px;
+}
+
+.summaryNote {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+
+/* Review page bits */
+.reviewItems {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reviewItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13.5px;
+}
+
+.reviewItem img {
+  width: 64px;
+  height: 64px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: #f7f7f7;
+}
+
+.editLink {
+  font-size: 13px;
+}
+
+/* Success */
+.success {
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 44px 24px;
+}
+
+.successEmoji {
+  font-size: 60px;
+  margin-bottom: 8px;
+}
+
+.successTitle {
+  color: var(--success);
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.successActions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 899px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    position: static;
+    order: -1;
+  }
+
+  .headerTitle {
+    font-size: 17px;
+  }
+}

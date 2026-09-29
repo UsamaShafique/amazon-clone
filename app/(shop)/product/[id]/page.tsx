@@ -33,7 +33,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
   const product = getProductById(id);
-  if (!product) return { title: "Product not found" };
+  // 404 here (before streaming starts) so the response carries a real 404 status.
+  if (!product) notFound();
   return {
     title: product.title.length > 55 ? `${product.title.slice(0, 55)}…` : product.title,
     description: product.description.slice(0, 158),

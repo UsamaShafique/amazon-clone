@@ -31,7 +31,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const category = getCategory(slug);
-  if (!category) return { title: "Category not found" };
+  // 404 here (before streaming starts) so the response carries a real 404 status.
+  if (!category) notFound();
   return {
     title: `${category.name} — Shop online`,
     description: category.description,
