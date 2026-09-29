@@ -19,6 +19,7 @@ import json
 import os
 import re
 import sys
+import time
 from datetime import datetime, timezone
 
 AUTHOR = "UsamaShafique"
@@ -169,7 +170,14 @@ def handle_stop(payload):
     n_responses = content.count("[LOG_ENTRY type=RESPONSE")
     if n_responses >= n_prompts:
         return
+    # The Stop event can fire before the final assistant message is
+    # flushed to the transcript file — retry briefly before giving up.
     text, model = final_response(payload.get("transcript_path", ""))
+    for _ in range(6):
+        if text:
+            break
+        time.sleep(0.5)
+        text, model = final_response(payload.get("transcript_path", ""))
     if not text:
         text = "(no final text response was produced for this turn)"
     if not model:

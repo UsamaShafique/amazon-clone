@@ -12,21 +12,33 @@ Claude Code lifecycle hooks, configured in **`.claude/settings.json`** (committe
 - **`UserPromptSubmit`** fires automatically on every prompt. The hook receives the payload (session id, transcript path, verbatim prompt) as JSON on stdin and appends the prompt to the session log.
 - **`Stop`** fires automatically at the end of every turn. The hook receives the session transcript path on stdin, parses the transcript JSONL, and extracts **only the final assistant text of the turn** — no thinking blocks, no tool calls, no intermediate steps, no subagent (sidechain) output — and appends it as the paired response.
 
-Both events run the same script: **`.claude/hooks/capture_log.py`**. It is append-only (it never edits or deletes an existing entry; only the frontmatter counters are updated), writes one file per session named `YYYY-MM-DD_HH-MM-SS_<session-id>.md` into **`.agent-logs/`**, and always exits 0 so a logging failure can never interrupt a session. `.agent-logs/` is **not** in `.gitignore` and ships with the repo.
+Both events run the same script: **`.claude/hooks/capture_log.py`**. It is append-only (existing entries are never edited or deleted; only the frontmatter counters update), writes one file per session named `YYYY-MM-DD_HH-MM-SS_<session-id>.md` into **`.agent-logs/`**, and always exits 0 so a logging failure can never interrupt a session. `.agent-logs/` is **not** gitignored and ships with the repo, committed interleaved with the code.
 
 ## Log file path
 
-Canary entries landed in:
-
-- Session 1: `.agent-logs/<PENDING — filled in after canary 1>`
-- Session 2: `.agent-logs/<PENDING — filled in after canary 2>`
+- Session 1 (setup + full build): `.agent-logs/2026-09-29_12-46-55_2cf44989-e705-4810-81d0-2b44c95c6586.md`
+- Session 2: a second-session canary is pending — it requires a fresh Claude Code session to be started in this repo; the hook is project-scoped so it fires automatically there too. This file will be updated with that log's path when it lands.
 
 ## Canary entries (pasted raw)
 
-<!-- PENDING: both canary prompt+response pairs will be pasted here raw once they land. -->
+The literal step-4 canary was skipped by the author — the assignment prompt itself served as the live capture test. Entry 1 in the session-1 log is the **entire assignment brief, verbatim and untruncated** (~950 lines, see the log file). The smallest complete prompt/response pair from that log, pasted raw:
 
-## What was tried first / caveats hit
+    [LOG_ENTRY type=PROMPT num=2 session=2cf44989]
+    timestamp: 2026-09-29T13:35:17.458Z
+    model: claude-fable-5
 
-- **Hook snapshot caveat:** Claude Code snapshots hook config at session startup for security — a hook added to `.claude/settings.json` *mid-session* does not fire until it is reviewed via the `/hooks` menu or a new session is started. This is why the canary test below was run after re-approving hooks (or restarting), rather than immediately in the same turn that installed them.
-- **Dry run before the real canary:** before relying on the hook, the script was exercised with simulated `UserPromptSubmit`/`Stop` stdin payloads against a fake transcript in a temp directory (deliberately *not* `.agent-logs/`, so the committed logs contain only genuine session captures). This validated that thinking blocks, tool calls, intermediate pre-tool text, and sidechain/subagent messages are excluded and only the prompt + final response are logged.
-- **Response extraction detail:** a turn's final answer can span multiple consecutive assistant messages in the transcript; the script walks the transcript backwards from the end, collecting assistant text blocks until it reaches the previous user entry (real prompt or tool result), then joins them in order. Turns where the model produced tool calls but no final text are logged as `(no final text response was produced for this turn)` rather than silently skipped.
+    run the project
+
+
+    [LOG_ENTRY type=RESPONSE num=2 session=2cf44989]
+    timestamp: 2026-09-29T13:39:13.532Z
+    model: claude-fable-5
+
+    (no final text response was produced for this turn)
+
+## What was tried first / what did not work
+
+1. **Hook snapshot caveat.** Claude Code snapshots hook *configuration* at session startup — hooks added to `.claude/settings.json` mid-session don't fire until reviewed via `/hooks` or a session restart. The canary had to wait for that approval; the first captured prompt confirms it fired from then on.
+2. **Dry run before relying on it.** The script was first exercised with simulated `UserPromptSubmit`/`Stop` stdin payloads against a fake transcript in a temp directory (deliberately *not* `.agent-logs/`, so committed logs contain only genuine session captures). That validated thinking/tool-call/sidechain exclusion and multi-message final answers.
+3. **Race condition, found live (see the raw pair above).** `RESPONSE num=2` reads "(no final text response was produced for this turn)" even though a final response existed. Cause: the `Stop` event can fire before the final assistant message is flushed to the transcript file, so the extractor saw the turn ending at the last tool result. Fixed in `capture_log.py` by retrying the transcript read (6 × 0.5 s) before falling back to the placeholder. Per the assignment rules the flawed entry was **left in the log unedited** — it is part of the honest record.
+4. **Interrupted turns produce unpaired prompts.** `PROMPT num=1` (the assignment brief) has no `RESPONSE num=1`: the user interrupted that turn (rejecting a git-commit tool call to say "run the project"), so no end-of-turn event fired. The pairing logic (`responses < prompts` guard) keeps subsequent numbering aligned instead of mispairing.
