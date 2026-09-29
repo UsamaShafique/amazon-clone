@@ -1,0 +1,170 @@
+.page {
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 18px 0 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 16px 60px;
+}
+
+.card {
+  width: min(400px, 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+
+.cardTitle {
+  font-size: 27px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.fine {
+  font-size: 12.5px;
+  line-height: 1.5;
+  margin: 12px 0;
+}
+
+.switchRow {
+  font-size: 13px;
+  margin-top: 14px;
+}
+
+.emailRow {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-size: 13.5px;
+  margin-bottom: 14px;
+}
+
+.emailRowAddress {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.passwordLabelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 22px 0 14px;
+  width: min(400px, 100%);
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  border-top: 1px solid #e7e7e7;
+}
+
+.divider span {
+  position: relative;
+  background: #fff;
+  padding: 0 8px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.secondary {
+  width: min(400px, 100%);
+}
+
+.workRow {
+  width: min(400px, 100%);
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e7e7e7;
+  font-size: 13.5px;
+}
+
+.demoBox {
+  width: min(400px, 100%);
+  background: #f0f8ff;
+  border: 1px solid #b3d4e8;
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.demoBox code {
+  background: #fff;
+  border: 1px solid #d5e5ef;
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+.requirements {
+  list-style: none;
+  font-size: 12.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: -6px 0 12px;
+}
+
+.reqMet {
+  color: var(--success);
+}
+
+.reqUnmet {
+  color: var(--text-secondary);
+}
+
+.footer {
+  border-top: 1px solid #e7e7e7;
+  padding: 20px 16px 30px;
+  text-align: center;
+  background: linear-gradient(#fff, #fafafa);
+}
+
+.footerLinks {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.footerLinks a {
+  color: var(--link);
+}
+
+.footerLinks a:hover {
+  text-decoration: underline;
+  color: var(--link-hover);
+}
+
+.footerCopy {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 10px;
+}
