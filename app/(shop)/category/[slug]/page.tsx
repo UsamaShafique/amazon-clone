@@ -28,6 +28,10 @@ export function generateStaticParams() {
   return CATEGORIES.map((c) => ({ slug: c.slug }));
 }
 
+// All categories are known at build time — unknown slugs 404 at the
+// routing layer (a real 404 status, not a streamed 200).
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const category = getCategory(slug);

@@ -30,6 +30,10 @@ export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ id: p.id }));
 }
 
+// The catalog is fully known at build time — unknown ids 404 at the
+// routing layer (a real 404 status, not a streamed 200).
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
   const product = getProductById(id);
