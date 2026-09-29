@@ -1,0 +1,218 @@
+:root {
+  /* Palette — dense marketplace hierarchy */
+  --header-bg: #131921;
+  --header-bg-light: #232f3e;
+  --nav-bg: #232f3e;
+  --page-bg: #e3e6e6;
+  --card-bg: #ffffff;
+
+  --accent: #febd69;
+  --accent-hover: #f3a847;
+  --btn-yellow: #ffd814;
+  --btn-yellow-hover: #f7ca00;
+  --btn-orange: #ffa41c;
+  --btn-orange-hover: #fa8900;
+
+  --link: #007185;
+  --link-hover: #c7511f;
+  --price: #0f1111;
+  --deal-red: #cc0c39;
+  --price-red: #b12704;
+  --success: #067d62;
+  --error: #c40000;
+  --star: #de7921;
+
+  --text: #0f1111;
+  --text-secondary: #565959;
+  --border: #d5d9d9;
+  --border-dark: #888c8c;
+
+  --radius: 8px;
+  --radius-sm: 4px;
+  --shadow: 0 2px 5px rgba(15, 17, 17, 0.15);
+  --shadow-lg: 0 8px 24px rgba(15, 17, 17, 0.22);
+  --maxw: 1500px;
+
+  --font:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--page-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 14px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 8px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px #c8f3fa, 0 0 0 1.5px var(--link);
+  border-radius: 3px;
+}
+
+/* ── Layout helpers ─────────────────────────────────────────── */
+.container {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 16px;
+  width: 100%;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.pageTitle {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 16px 0;
+}
+
+/* ── Text helpers ───────────────────────────────────────────── */
+.link {
+  color: var(--link);
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.muted {
+  color: var(--text-secondary);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.clamp2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.clamp3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Amazon-style alert box used across forms */
+.alertBox {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border: 1px solid var(--error);
+  border-radius: var(--radius);
+  background: #fff;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+
+.alertBox strong {
+  display: block;
+  color: var(--error);
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.alertIcon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--error);
+  color: #fff;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successBox {
+  border: 1px solid var(--success);
+  border-radius: var(--radius);
+  background: #f0faf7;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  color: var(--success);
+}
+
+@media (max-width: 767px) {
+  .pageTitle {
+    font-size: 22px;
+  }
+}

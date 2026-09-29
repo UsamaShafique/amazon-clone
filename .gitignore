@@ -1,0 +1,14 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# misc
+.DS_Store
+*.pem
+*.tsbuildinfo
+
+# NOTE: .agent-logs/ is intentionally NOT ignored — it ships with the repo
+# as part of the 8x assignment capture requirements.

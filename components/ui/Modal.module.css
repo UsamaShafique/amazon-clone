@@ -1,0 +1,69 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 17, 17, 0.55);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 16px;
+  z-index: 900;
+  overflow-y: auto;
+}
+
+.dialog {
+  background: #fff;
+  border-radius: var(--radius);
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  animation: modal-in 0.18s ease;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e7e7e7;
+  background: #f0f2f2;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.title {
+  font-size: 16px;
+  margin: 0;
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: var(--text-secondary);
+  padding: 6px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.close:hover {
+  color: var(--text);
+}
+
+.body {
+  padding: 18px;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 500px) {
+  .overlay {
+    padding: 16px 8px;
+  }
+}

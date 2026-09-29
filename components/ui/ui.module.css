@@ -1,0 +1,274 @@
+/* ── Rating ─────────────────────────────────────────────────── */
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.ratingMd {
+  font-size: 16px;
+}
+
+.ratingValue {
+  font-weight: 500;
+}
+
+.stars {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  font-size: 1.15em;
+  letter-spacing: 1px;
+}
+
+.starsBase {
+  color: #d5d9d9;
+}
+
+.starsFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--star);
+}
+
+.ratingCount {
+  color: var(--link);
+  font-size: 0.95em;
+}
+
+/* ── Price ──────────────────────────────────────────────────── */
+.priceRow {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.price {
+  color: var(--price);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.priceSymbol,
+.priceFraction {
+  font-size: 0.55em;
+  position: relative;
+  top: -0.55em;
+}
+
+.price-sm .priceWhole {
+  font-size: 18px;
+}
+
+.price-md .priceWhole {
+  font-size: 22px;
+}
+
+.price-lg .priceWhole {
+  font-size: 28px;
+}
+
+.price-sm,
+.price-md,
+.price-lg {
+  align-items: baseline;
+}
+
+.priceWhole {
+  font-size: 22px;
+}
+
+.listPrice {
+  color: var(--text-secondary);
+  font-size: 12.5px;
+}
+
+.discountBadge {
+  background: var(--deal-red);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 3px 7px;
+  border-radius: 3px;
+}
+
+/* ── Badges ─────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 3px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.badge-bestseller {
+  background: #e67a00;
+}
+
+.badge-choice {
+  background: #232f3e;
+}
+
+.badge-choice::after {
+  content: "";
+}
+
+.badge-deal {
+  background: var(--deal-red);
+}
+
+.badge-new {
+  background: var(--link);
+}
+
+.badge-limited {
+  background: #7c3aed;
+}
+
+/* ── Breadcrumb ─────────────────────────────────────────────── */
+.breadcrumb {
+  padding: 12px 0 4px;
+}
+
+.breadcrumbList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.breadcrumbSep {
+  color: var(--text-secondary);
+}
+
+.breadcrumbLink:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.breadcrumbCurrent {
+  color: var(--price-red);
+  font-weight: 600;
+}
+
+/* ── Pagination ─────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 28px 0;
+  flex-wrap: wrap;
+}
+
+.pageGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pageBtn {
+  min-width: 40px;
+  padding: 8px 12px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  font-size: 14px;
+}
+
+.pageBtn:hover {
+  border-color: var(--text);
+}
+
+.pageArrow {
+  min-width: 96px;
+}
+
+.pageCurrent {
+  border-color: var(--text);
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.pageDisabled {
+  color: var(--text-secondary);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.pageEllipsis {
+  color: var(--text-secondary);
+  padding: 0 2px;
+}
+
+/* ── Empty state ────────────────────────────────────────────── */
+.empty {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 56px 24px;
+  text-align: center;
+}
+
+.emptyEmoji {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+.emptyTitle {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.emptyBody {
+  color: var(--text-secondary);
+  max-width: 440px;
+  margin: 0 auto 18px;
+}
+
+.emptyAction {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Skeleton ───────────────────────────────────────────────── */
+.skeleton {
+  display: block;
+  background: linear-gradient(90deg, #e9ecec 25%, #f5f6f6 50%, #e9ecec 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius-sm);
+}
+
+.skeletonRounded {
+  border-radius: 50%;
+}
+
+.skeletonCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
