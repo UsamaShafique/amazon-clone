@@ -1,0 +1,248 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.filterSelect {
+  background: #f0f2f2;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 7px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.orderCard {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.orderHeader {
+  display: flex;
+  gap: 26px;
+  background: #f0f2f2;
+  border-bottom: 1px solid var(--border);
+  padding: 13px 20px;
+  font-size: 12.5px;
+  flex-wrap: wrap;
+}
+
+.orderHeaderCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.orderHeaderLabel {
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.4px;
+  font-size: 11.5px;
+}
+
+.orderHeaderValue {
+  color: var(--text);
+}
+
+.orderNumberCol {
+  margin-left: auto;
+  text-align: right;
+}
+
+.orderBody {
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 20px;
+}
+
+.statusTitle {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.statusDelivered {
+  color: var(--text);
+}
+
+.statusShipped {
+  color: var(--success);
+}
+
+.itemRow {
+  display: flex;
+  gap: 14px;
+  padding: 10px 0;
+}
+
+.itemRow img {
+  width: 84px;
+  height: 84px;
+  border-radius: 6px;
+  background: #f7f7f7;
+  flex-shrink: 0;
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.itemTitle {
+  color: var(--link);
+  font-size: 14px;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.itemTitle:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.itemQty {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.itemActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sideActions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Order detail */
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  font-size: 13.5px;
+}
+
+.detailHeading {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.summaryTable {
+  width: 100%;
+  font-size: 13.5px;
+  border-collapse: collapse;
+}
+
+.summaryTable td {
+  padding: 2px 0;
+}
+
+.summaryTable td:last-child {
+  text-align: right;
+}
+
+.summaryTotal td {
+  font-weight: 700;
+  font-size: 15px;
+  padding-top: 8px;
+  color: var(--price-red);
+}
+
+/* Tracking timeline */
+.timeline {
+  list-style: none;
+  margin: 10px 0 0;
+}
+
+.timelineStep {
+  display: flex;
+  gap: 14px;
+  position: relative;
+  padding-bottom: 26px;
+}
+
+.timelineStep::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 24px;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.timelineStep:last-child {
+  padding-bottom: 0;
+}
+
+.timelineStep:last-child::before {
+  display: none;
+}
+
+.timelineDot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #e3e6e6;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.timelineDone .timelineDot {
+  background: var(--success);
+  color: #fff;
+}
+
+.timelineDone::before {
+  background: var(--success);
+}
+
+.timelineLabel {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.timelineHint {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 767px) {
+  .orderBody {
+    grid-template-columns: 1fr;
+  }
+
+  .detailGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .orderNumberCol {
+    margin-left: 0;
+    text-align: left;
+  }
+}
