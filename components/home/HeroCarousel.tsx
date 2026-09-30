@@ -93,7 +93,7 @@ export function HeroCarousel() {
           key={slide.id}
           className={cx(styles.heroSlide, i === index && styles.heroSlideActive)}
           style={{
-            background: `linear-gradient(105deg, hsl(${slide.hue}, 70%, 82%) 0%, hsl(${(slide.hue + 45) % 360}, 65%, 74%) 100%)`,
+            background: `linear-gradient(110deg, hsl(${slide.hue}, 75%, 93%) 0%, hsl(${(slide.hue + 45) % 360}, 65%, 86%) 100%)`,
           }}
           role="group"
           aria-roledescription="slide"
@@ -151,7 +151,6 @@ export function HeroCarousel() {
           />
         ))}
       </div>
-      <div className={styles.heroFade} aria-hidden="true" />
     </section>
   );
 }

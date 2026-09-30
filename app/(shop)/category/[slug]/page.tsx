@@ -83,7 +83,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
       <section
         className={styles.categoryBanner}
         style={{
-          background: `linear-gradient(100deg, hsl(${category.hue}, 65%, 85%), hsl(${(category.hue + 40) % 360}, 60%, 78%))`,
+          background: `linear-gradient(100deg, hsl(${category.hue}, 70%, 93%), hsl(${(category.hue + 40) % 360}, 60%, 87%))`,
         }}
       >
         <span className={styles.categoryEmoji} aria-hidden="true">

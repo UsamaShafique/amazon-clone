@@ -1,5 +1,5 @@
 import styles from "./ui.module.css";
-import { cx, formatPrice, splitPrice } from "@/lib/utils";
+import { cx, formatPrice } from "@/lib/utils";
 
 interface PriceProps {
   value: number;
@@ -9,7 +9,7 @@ interface PriceProps {
   showDiscountBadge?: boolean;
 }
 
-/** Amazon-style price: superscript symbol + cents, optional list price. */
+/** Clean modern price: bold figure, muted was-price, optional % pill. */
 export function Price({
   value,
   originalPrice,
@@ -17,28 +17,15 @@ export function Price({
   size = "md",
   showDiscountBadge = false,
 }: PriceProps) {
-  const { whole, fraction } = splitPrice(value);
   return (
     <span className={cx(styles.priceRow, styles[`price-${size}`])}>
-      {showDiscountBadge && discount ? (
-        <span className={styles.discountBadge}>-{discount}%</span>
-      ) : null}
-      <span className={styles.price} aria-label={formatPrice(value)}>
-        <span className={styles.priceSymbol} aria-hidden="true">
-          $
-        </span>
-        <span className={styles.priceWhole} aria-hidden="true">
-          {whole}
-        </span>
-        <span className={styles.priceFraction} aria-hidden="true">
-          {fraction}
-        </span>
-      </span>
+      <span className={styles.price}>{formatPrice(value)}</span>
       {originalPrice !== undefined && originalPrice > value && (
-        <span className={styles.listPrice}>
-          List: <s>{formatPrice(originalPrice)}</s>
-        </span>
+        <s className={styles.listPrice}>{formatPrice(originalPrice)}</s>
       )}
+      {showDiscountBadge && discount ? (
+        <span className={styles.discountBadge}>−{discount}%</span>
+      ) : null}
     </span>
   );
 }

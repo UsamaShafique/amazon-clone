@@ -23,8 +23,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 18px;
-  border-bottom: 1px solid #e7e7e7;
-  background: #f0f2f2;
+  border-bottom: 1px solid var(--border);
+  background: #f4f4f2;
   border-radius: var(--radius) var(--radius) 0 0;
 }
 

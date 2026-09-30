@@ -4,70 +4,80 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border-radius: 100px;
+  border-radius: 10px;
   border: 1px solid transparent;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text);
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
   white-space: nowrap;
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.98);
 }
 
 .button:disabled {
   cursor: not-allowed;
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
+/* Primary — solid ink */
 .primary {
-  background: var(--btn-yellow);
-  border-color: #fcd200;
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
 }
 
 .primary:hover:not(:disabled) {
-  background: var(--btn-yellow-hover);
+  background: var(--ink-hover);
+  border-color: var(--ink-hover);
 }
 
+/* Accent — brand orange, reserved for the strongest CTA on a page */
 .accent {
-  background: var(--btn-orange);
-  border-color: #ff8f00;
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
 }
 
 .accent:hover:not(:disabled) {
-  background: var(--btn-orange-hover);
+  background: var(--brand-hover);
+  border-color: var(--brand-hover);
 }
 
 .outline {
   background: #fff;
-  border-color: var(--border);
-  box-shadow: 0 2px 5px rgba(15, 17, 17, 0.06);
+  border-color: var(--border-dark);
 }
 
 .outline:hover:not(:disabled) {
-  background: #f7fafa;
-  border-color: var(--border-dark);
+  background: #f7f7f6;
+  border-color: var(--ink);
 }
 
 .danger-outline {
   background: #fff;
-  border-color: var(--error);
+  border-color: #fca5a5;
   color: var(--error);
 }
 
 .danger-outline:hover:not(:disabled) {
-  background: #fff5f5;
+  background: #fef2f2;
 }
 
 .sm {
-  padding: 5px 14px;
+  padding: 6px 14px;
   font-size: 13px;
+  border-radius: 9px;
 }
 
 .md {
-  padding: 8px 18px;
+  padding: 9px 18px;
 }
 
 .lg {
-  padding: 11px 22px;
+  padding: 12px 24px;
   font-size: 15px;
 }
 
@@ -79,10 +89,16 @@
   position: absolute;
   width: 16px;
   height: 16px;
-  border: 2px solid rgba(15, 17, 17, 0.3);
-  border-top-color: var(--text);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: currentColor;
   border-radius: 50%;
   animation: btn-spin 0.7s linear infinite;
+}
+
+.outline .spinner,
+.danger-outline .spinner {
+  border-color: rgba(24, 24, 27, 0.2);
+  border-top-color: var(--ink);
 }
 
 .labelLoading {

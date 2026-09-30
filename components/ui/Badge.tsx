@@ -3,11 +3,11 @@ import styles from "./ui.module.css";
 import { cx } from "@/lib/utils";
 
 const LABELS: Record<BadgeType, string> = {
-  bestseller: "#1 Best Seller",
-  choice: "Shopora's Choice",
-  deal: "Limited time deal",
-  new: "New arrival",
-  limited: "Only a few left",
+  bestseller: "Bestseller",
+  choice: "Top pick",
+  deal: "Deal",
+  new: "New",
+  limited: "Low stock",
 };
 
 export function Badge({ type }: { type: BadgeType }) {

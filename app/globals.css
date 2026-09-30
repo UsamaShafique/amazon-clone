@@ -1,41 +1,50 @@
 :root {
-  /* Palette — dense marketplace hierarchy */
-  --header-bg: #131921;
-  --header-bg-light: #232f3e;
-  --nav-bg: #232f3e;
-  --page-bg: #e3e6e6;
+  /* ── Modern light palette, one strong accent ─────────────── */
+  --page-bg: #f6f6f4;
   --card-bg: #ffffff;
+  --header-bg: #ffffff;
+  --header-bg-light: #1c1c1f; /* footer panel (dark ink) */
+  --nav-bg: #ffffff;
 
-  --accent: #febd69;
-  --accent-hover: #f3a847;
-  --btn-yellow: #ffd814;
-  --btn-yellow-hover: #f7ca00;
-  --btn-orange: #ffa41c;
-  --btn-orange-hover: #fa8900;
+  --brand: #ea580c;
+  --brand-hover: #c2410c;
+  --brand-soft: #fff1e7;
 
-  --link: #007185;
-  --link-hover: #c7511f;
-  --price: #0f1111;
-  --deal-red: #cc0c39;
-  --price-red: #b12704;
-  --success: #067d62;
-  --error: #c40000;
-  --star: #de7921;
+  --ink: #18181b;
+  --ink-hover: #2f2f36;
 
-  --text: #0f1111;
-  --text-secondary: #565959;
-  --border: #d5d9d9;
-  --border-dark: #888c8c;
+  /* Legacy token names kept so every module resolves cleanly */
+  --accent: var(--brand);
+  --accent-hover: var(--brand-hover);
+  --btn-yellow: var(--ink);
+  --btn-yellow-hover: var(--ink-hover);
+  --btn-orange: var(--brand);
+  --btn-orange-hover: var(--brand-hover);
 
-  --radius: 8px;
-  --radius-sm: 4px;
-  --shadow: 0 2px 5px rgba(15, 17, 17, 0.15);
-  --shadow-lg: 0 8px 24px rgba(15, 17, 17, 0.22);
-  --maxw: 1500px;
+  --link: #0f766e;
+  --link-hover: #115e59;
+  --price: #18181b;
+  --deal-red: #dc2626;
+  --price-red: #b91c1c;
+  --success: #059669;
+  --error: #dc2626;
+  --star: #f59e0b;
+
+  --text: #18181b;
+  --text-secondary: #6f6f78;
+  --border: #e4e4e7;
+  --border-dark: #c9c9cf;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 18px;
+  --shadow: 0 1px 2px rgba(24, 24, 27, 0.06), 0 1px 6px rgba(24, 24, 27, 0.04);
+  --shadow-lg: 0 12px 32px rgba(24, 24, 27, 0.14);
+  --maxw: 1440px;
 
   --font:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-    Arial, sans-serif;
+    var(--font-inter, "Inter"), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
@@ -54,8 +63,8 @@ body {
 
 body {
   font-family: var(--font);
-  font-size: 14px;
-  line-height: 1.45;
+  font-size: 14.5px;
+  line-height: 1.5;
   color: var(--text);
   background: var(--page-bg);
   -webkit-font-smoothing: antialiased;
@@ -89,8 +98,9 @@ h2,
 h3,
 h4 {
   margin: 0 0 8px;
-  line-height: 1.25;
+  line-height: 1.2;
   font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
 p {
@@ -105,15 +115,15 @@ ol {
 
 :focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px #c8f3fa, 0 0 0 1.5px var(--link);
-  border-radius: 3px;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.22), 0 0 0 1.5px var(--brand);
+  border-radius: 4px;
 }
 
 /* ── Layout helpers ─────────────────────────────────────────── */
 .container {
   max-width: var(--maxw);
   margin-inline: auto;
-  padding-inline: 16px;
+  padding-inline: 20px;
   width: 100%;
 }
 
@@ -121,12 +131,14 @@ ol {
   background: var(--card-bg);
   border-radius: var(--radius);
   padding: 20px;
+  border: 1px solid var(--border);
 }
 
 .pageTitle {
   font-size: 28px;
   font-weight: 700;
-  margin: 16px 0;
+  margin: 18px 0;
+  letter-spacing: -0.02em;
 }
 
 /* ── Text helpers ───────────────────────────────────────────── */
@@ -170,14 +182,14 @@ ol {
   overflow: hidden;
 }
 
-/* Amazon-style alert box used across forms */
+/* Alert / success boxes used across forms */
 .alertBox {
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  border: 1px solid var(--error);
+  border: 1px solid #fecaca;
   border-radius: var(--radius);
-  background: #fff;
+  background: #fef2f2;
   padding: 14px 16px;
   margin-bottom: 14px;
 }
@@ -203,9 +215,9 @@ ol {
 }
 
 .successBox {
-  border: 1px solid var(--success);
+  border: 1px solid #a7f3d0;
   border-radius: var(--radius);
-  background: #f0faf7;
+  background: #ecfdf5;
   padding: 14px 16px;
   margin-bottom: 14px;
   color: var(--success);
@@ -214,5 +226,9 @@ ol {
 @media (max-width: 767px) {
   .pageTitle {
     font-size: 22px;
+  }
+
+  .container {
+    padding-inline: 14px;
   }
 }

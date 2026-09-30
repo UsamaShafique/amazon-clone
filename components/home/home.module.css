@@ -1,17 +1,21 @@
-/* ── Hero carousel ──────────────────────────────────────────── */
+/* ── Hero carousel — contained, rounded, editorial ──────────── */
 .hero {
   position: relative;
-  height: 400px;
+  height: 380px;
   overflow: hidden;
+  max-width: var(--maxw);
+  margin: 18px auto 0;
+  border-radius: var(--radius-lg);
+  width: calc(100% - 40px);
 }
 
 .heroSlide {
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding: 56px clamp(24px, 8vw, 120px) 0;
+  padding: 0 clamp(28px, 6vw, 88px);
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
@@ -23,143 +27,149 @@
 }
 
 .heroContent {
-  max-width: 520px;
+  max-width: 560px;
 }
 
 .heroEyebrow {
-  font-size: 15px;
+  display: inline-block;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: rgba(15, 17, 17, 0.65);
-  margin-bottom: 6px;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 100px;
+  padding: 5px 14px;
+  margin-bottom: 14px;
 }
 
 .heroTitle {
-  font-size: clamp(26px, 4vw, 44px);
+  font-size: clamp(28px, 4vw, 46px);
   font-weight: 800;
-  color: #0f1111;
-  margin-bottom: 18px;
-  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 22px;
+  line-height: 1.08;
 }
 
 .heroCta {
   display: inline-block;
-  background: #0f1111;
+  background: var(--ink);
   color: #fff;
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 600;
-  padding: 10px 22px;
-  border-radius: 100px;
+  padding: 12px 26px;
+  border-radius: 12px;
+  transition: background 0.15s ease;
 }
 
 .heroCta:hover {
-  background: #333;
+  background: var(--ink-hover);
 }
 
 .heroArt {
   display: flex;
-  gap: clamp(6px, 2vw, 22px);
-  align-items: flex-start;
-  padding-top: 8px;
+  gap: clamp(6px, 2vw, 20px);
+  align-items: center;
 }
 
 .heroEmoji {
-  font-size: clamp(48px, 7vw, 96px);
-  filter: drop-shadow(0 10px 18px rgba(15, 17, 17, 0.25));
+  font-size: clamp(48px, 6.5vw, 92px);
+  filter: drop-shadow(0 12px 20px rgba(24, 24, 27, 0.18));
 }
 
 .heroEmoji:nth-child(2) {
-  transform: translateY(34px) scale(1.15);
+  transform: translateY(-26px) scale(1.15);
 }
 
 .heroEmoji:nth-child(3) {
-  transform: translateY(6px) rotate(8deg);
+  transform: translateY(14px) rotate(8deg);
 }
 
 .heroArrow {
   position: absolute;
-  top: 90px;
-  width: 78px;
-  height: 130px;
-  background: none;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
   border: none;
-  border-radius: 6px;
-  font-size: 56px;
-  color: #0f1111;
+  box-shadow: var(--shadow);
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ink);
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3px;
 }
 
 .heroArrow:hover {
-  outline: 2px solid #fff;
+  background: #fff;
 }
 
 .heroArrowLeft {
-  left: 4px;
+  left: 14px;
 }
 
 .heroArrowRight {
-  right: 4px;
+  right: 14px;
 }
 
 .heroDots {
   position: absolute;
-  top: 14px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
+  gap: 7px;
   z-index: 10;
 }
 
 .heroDot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  border: 1px solid rgba(15, 17, 17, 0.5);
-  background: rgba(255, 255, 255, 0.6);
+  width: 8px;
+  height: 8px;
+  border-radius: 100px;
+  border: none;
+  background: rgba(24, 24, 27, 0.25);
   padding: 0;
+  transition: width 0.2s ease, background 0.2s ease;
 }
 
 .heroDotActive {
-  background: #0f1111;
-}
-
-/* Bottom fade into the page background, like the reference homepage */
-.heroFade {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 110px;
-  background: linear-gradient(to bottom, transparent, var(--page-bg));
-  pointer-events: none;
+  width: 22px;
+  background: var(--ink);
 }
 
 /* ── Homepage layout ────────────────────────────────────────── */
 .homeMain {
-  position: relative;
-  margin-top: -92px;
-  z-index: 20;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding-bottom: 10px;
+  gap: 20px;
+  padding: 20px 0 10px;
 }
 
 .tileRow {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  gap: 20px;
 }
 
 /* ── Category tile card ─────────────────────────────────────── */
 .tileCard {
   background: #fff;
-  border-radius: var(--radius);
-  padding: 18px 18px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 20px 16px;
   display: flex;
   flex-direction: column;
+  transition: box-shadow 0.18s ease;
+}
+
+.tileCard:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 .tileHeader {
@@ -170,19 +180,20 @@
 }
 
 .tileTitle {
-  font-size: 19px;
-  margin-bottom: 12px;
+  font-size: 17px;
+  margin-bottom: 14px;
 }
 
 .tileHeaderArrow {
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1;
-  color: var(--text);
+  color: var(--text-secondary);
   padding: 0 4px;
+  border-radius: 6px;
 }
 
 .tileHeaderArrow:hover {
-  color: var(--link-hover);
+  color: var(--brand);
 }
 
 .tileGrid {
@@ -195,36 +206,38 @@
 .tileLink {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .tileLink:hover .tileCaption {
-  color: var(--link-hover);
-  text-decoration: underline;
+  color: var(--brand);
 }
 
 .tileImage {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 .tileCaption {
   font-size: 12.5px;
+  font-weight: 500;
   color: var(--text);
 }
 
 .tileFooter {
-  margin-top: 12px;
+  margin-top: 14px;
   font-size: 13px;
+  font-weight: 600;
 }
 
 /* ── Sign-in nudge card ─────────────────────────────────────── */
 .signinCard {
   background: #fff;
-  border-radius: var(--radius);
-  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 26px;
   text-align: center;
 }
 
@@ -249,40 +262,41 @@
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  background: linear-gradient(100deg, #232f3e, #37475a);
-  border-radius: var(--radius);
+  background: linear-gradient(105deg, #18181b, #2c2c31);
+  border-radius: var(--radius-lg);
   color: #fff;
-  padding: 26px 30px;
+  padding: 30px 34px;
   flex-wrap: wrap;
 }
 
 .promoTitle {
   font-size: 22px;
   margin-bottom: 4px;
+  color: #fff;
 }
 
 .promoTitle em {
-  color: #00a8e1;
+  color: var(--brand);
   font-style: italic;
   font-weight: 800;
 }
 
 .promoText {
-  color: #ccc;
+  color: #b9b9c0;
   margin: 0;
 }
 
 .promoCta {
-  background: var(--btn-yellow);
-  color: var(--text);
+  background: var(--brand);
+  color: #fff;
   font-weight: 600;
-  padding: 10px 24px;
-  border-radius: 100px;
+  padding: 11px 26px;
+  border-radius: 12px;
   white-space: nowrap;
 }
 
 .promoCta:hover {
-  background: var(--btn-yellow-hover);
+  background: var(--brand-hover);
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
@@ -295,13 +309,16 @@
 @media (max-width: 767px) {
   .hero {
     height: 300px;
+    width: calc(100% - 24px);
+    margin-top: 12px;
   }
 
   .heroSlide {
-    padding-top: 40px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 22px;
   }
 
   .heroArt {
@@ -310,7 +327,7 @@
   }
 
   .heroEmoji {
-    font-size: 44px;
+    font-size: 40px;
   }
 
   .heroArrow {
@@ -318,8 +335,12 @@
   }
 
   .homeMain {
-    margin-top: -80px;
-    gap: 12px;
+    gap: 14px;
+    padding: 14px 0 8px;
+  }
+
+  .tileRow {
+    gap: 14px;
   }
 }
 

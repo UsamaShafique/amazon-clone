@@ -1,14 +1,19 @@
 .header {
   background: var(--header-bg);
-  color: #fff;
+  color: var(--text);
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04);
 }
 
 /* ── Top bar ────────────────────────────────────────────────── */
 .topBar {
   display: flex;
-  align-items: stretch;
-  gap: 6px;
-  padding: 6px 12px;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
   max-width: var(--maxw);
   margin-inline: auto;
 }
@@ -17,28 +22,28 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 6px 9px;
-  border: 1px solid transparent;
-  border-radius: 2px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 10px;
   background: none;
-  color: #fff;
+  color: var(--text);
   text-align: left;
   line-height: 1.25;
   white-space: nowrap;
 }
 
 .headerAction:hover {
-  border-color: #fff;
+  background: #f4f4f2;
 }
 
 .actionLine1 {
-  font-size: 12px;
-  color: #ccc;
+  font-size: 11.5px;
+  color: var(--text-secondary);
 }
 
 .actionLine2 {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13.5px;
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -49,7 +54,7 @@
   height: 0;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  border-top: 5px solid #a7acb2;
+  border-top: 5px solid var(--border-dark);
   display: inline-block;
 }
 
@@ -57,33 +62,22 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 6px 9px;
-  border: 1px solid transparent;
-  border-radius: 2px;
-  color: #fff;
+  gap: 7px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  color: var(--ink);
+  flex-shrink: 0;
 }
 
 .logo:hover {
-  border-color: #fff;
+  background: #f4f4f2;
 }
 
 .logoText {
-  position: relative;
-  font-size: 23px;
+  font-size: 22px;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.04em;
   line-height: 1;
-  padding-bottom: 5px;
-}
-
-.logoSwoosh {
-  position: absolute;
-  left: 2px;
-  right: 6px;
-  bottom: 0;
-  width: calc(100% - 8px);
-  height: 7px;
 }
 
 .logoMark {
@@ -96,44 +90,55 @@
   display: flex;
   align-items: center;
   min-width: 0;
+  max-width: 720px;
+  margin-inline: auto;
 }
 
 .searchWrap {
   position: relative;
   display: flex;
   width: 100%;
-  height: 40px;
-  border-radius: 6px;
+  height: 44px;
+  border-radius: 100px;
+  background: #f1f1ef;
+  border: 1.5px solid transparent;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .searchWrap:focus-within {
-  box-shadow: 0 0 0 3px var(--accent);
+  background: #fff;
+  border-color: var(--ink);
 }
 
 .searchCategory {
   flex-shrink: 0;
-  max-width: 130px;
+  max-width: 132px;
   border: none;
-  border-radius: 6px 0 0 6px;
-  background: #f3f3f3;
-  color: #555;
-  font-size: 12px;
-  padding: 0 6px;
-  border-right: 1px solid #cdcdcd;
+  border-radius: 100px 0 0 100px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 0 4px 0 18px;
   cursor: pointer;
 }
 
 .searchCategory:hover {
-  background: #dadada;
+  color: var(--ink);
 }
 
 .searchInput {
   flex: 1;
   min-width: 0;
   border: none;
+  background: transparent;
   padding: 0 12px;
-  font-size: 15px;
+  font-size: 14.5px;
   color: var(--text);
+}
+
+.searchInput::placeholder {
+  color: #9c9ca4;
 }
 
 .searchInput:focus {
@@ -143,29 +148,37 @@
 
 .searchButton {
   flex-shrink: 0;
-  width: 48px;
+  width: 44px;
+  height: 36px;
+  margin: 3px 4px 3px 0;
   border: none;
-  border-radius: 0 6px 6px 0;
-  background: var(--accent);
+  border-radius: 100px;
+  background: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .searchButton:hover {
-  background: var(--accent-hover);
+  background: var(--ink-hover);
+}
+
+.searchButton svg circle,
+.searchButton svg path {
+  stroke: #fff;
 }
 
 .suggestions {
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 8px);
   left: 0;
   right: 0;
   background: #fff;
-  border-radius: 6px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
   list-style: none;
-  padding: 6px 0;
+  padding: 6px;
   z-index: 300;
   color: var(--text);
 }
@@ -174,17 +187,18 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 9px 14px;
+  padding: 9px 12px;
   font-size: 14px;
+  border-radius: 8px;
 }
 
 .suggestion:hover,
 .suggestionActive {
-  background: #eaeded;
+  background: #f4f4f2;
 }
 
 .suggestionSearch {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .suggestionIcon {
@@ -199,11 +213,12 @@
 
 .dropdown {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 6px);
   right: 0;
   background: #fff;
   color: var(--text);
-  border-radius: 4px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
   padding: 18px 22px;
   z-index: 400;
@@ -211,23 +226,13 @@
 }
 
 .dropdownNarrow {
-  min-width: 220px;
-}
-
-.dropdown::before {
-  content: "";
-  position: absolute;
-  top: -8px;
-  right: 40px;
-  border: 8px solid transparent;
-  border-bottom-color: #fff;
-  border-top: none;
+  min-width: 230px;
 }
 
 .dropdownSignin {
   text-align: center;
   padding-bottom: 14px;
-  border-bottom: 1px solid #e7e7e7;
+  border-bottom: 1px solid var(--border);
   margin-bottom: 14px;
 }
 
@@ -248,12 +253,12 @@
 }
 
 .dropdownColumns > div:last-child {
-  border-left: 1px solid #e7e7e7;
+  border-left: 1px solid var(--border);
   padding-left: 26px;
 }
 
 .dropdownHeading {
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 8px;
 }
 
@@ -261,14 +266,13 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 8px;
   font-size: 13px;
-  color: #444;
+  color: #4b4b53;
 }
 
 .dropdownList a:hover {
-  color: var(--link-hover);
-  text-decoration: underline;
+  color: var(--brand);
 }
 
 .dropdownSignout {
@@ -276,12 +280,11 @@
   border: none;
   padding: 0;
   font-size: 13px;
-  color: #444;
+  color: #4b4b53;
 }
 
 .dropdownSignout:hover {
-  color: var(--link-hover);
-  text-decoration: underline;
+  color: var(--brand);
 }
 
 /* Language menu */
@@ -300,104 +303,112 @@
   border: none;
   padding: 4px 0;
   font-size: 13px;
-  color: #444;
+  color: #4b4b53;
 }
 
 .langOption:hover {
-  color: var(--link-hover);
+  color: var(--brand);
 }
 
 .langRadio {
   width: 12px;
   height: 12px;
-  border: 1px solid var(--border-dark);
+  border: 1.5px solid var(--border-dark);
   border-radius: 50%;
   display: inline-block;
 }
 
 .langActive {
-  color: var(--link-hover);
+  color: var(--brand);
   font-weight: 700;
 }
 
 .langActive .langRadio {
-  border-color: var(--link-hover);
-  background: radial-gradient(circle, var(--link-hover) 45%, transparent 50%);
+  border-color: var(--brand);
+  background: radial-gradient(circle, var(--brand) 45%, transparent 50%);
 }
 
 /* ── Cart ───────────────────────────────────────────────────── */
 .cartLink {
   display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  padding: 6px 9px;
-  border: 1px solid transparent;
-  border-radius: 2px;
-  color: #fff;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: var(--ink);
 }
 
 .cartLink:hover {
-  border-color: #fff;
+  background: #f4f4f2;
 }
 
 .cartIconWrap {
   position: relative;
+  display: inline-flex;
 }
 
 .cartCount {
   position: absolute;
-  top: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--btn-orange);
-  font-weight: 800;
-  font-size: 15px;
+  top: -7px;
+  right: -9px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 100px;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cartLabel {
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.1;
+  font-size: 13.5px;
+  font-weight: 600;
 }
 
 /* ── Nav bar ────────────────────────────────────────────────── */
 .navBar {
-  background: var(--nav-bg);
+  border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
-  padding: 0 8px;
+  padding: 0 14px;
   overflow: hidden;
+  max-width: var(--maxw);
+  margin-inline: auto;
 }
 
 .navAll {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
   background: none;
-  border: 1px solid transparent;
-  border-radius: 2px;
-  color: #fff;
-  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  color: var(--ink);
+  font-size: 13.5px;
   font-weight: 700;
-  padding: 8px 9px;
+  padding: 9px 10px;
   flex-shrink: 0;
 }
 
 .navAll:hover {
-  border-color: #fff;
+  background: #f4f4f2;
 }
 
 .hamburger {
   display: inline-flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 3.5px;
   width: 16px;
 }
 
 .hamburger span {
   height: 2px;
-  background: #fff;
-  border-radius: 1px;
+  background: currentColor;
+  border-radius: 2px;
 }
 
 .navLinks {
@@ -412,24 +423,26 @@
 }
 
 .navLink {
-  color: #fff;
+  color: #4b4b53;
   font-size: 13.5px;
-  padding: 9px 9px;
-  border: 1px solid transparent;
-  border-radius: 2px;
+  font-weight: 500;
+  padding: 10px 11px;
   white-space: nowrap;
+  border-bottom: 2px solid transparent;
 }
 
 .navLink:hover {
-  border-color: #fff;
+  color: var(--ink);
+  border-bottom-color: var(--brand);
 }
 
 /* ── Drawer ─────────────────────────────────────────────────── */
 .drawerOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 17, 17, 0.6);
+  background: rgba(24, 24, 27, 0.5);
   z-index: 800;
+  backdrop-filter: blur(2px);
 }
 
 .drawer {
@@ -437,22 +450,23 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: min(365px, 86vw);
+  width: min(360px, 86vw);
   background: #fff;
   color: var(--text);
   overflow-y: auto;
   animation: drawer-in 0.22s ease;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
 }
 
 .drawerHello {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--nav-bg);
-  color: #fff;
-  font-size: 17px;
+  background: var(--brand-soft);
+  color: var(--ink);
+  font-size: 16px;
   font-weight: 700;
-  padding: 14px 26px;
+  padding: 16px 26px;
   position: sticky;
   top: 0;
   z-index: 2;
@@ -461,12 +475,14 @@
 .drawerClose {
   position: fixed;
   top: 10px;
-  left: min(375px, calc(86vw + 10px));
-  background: none;
+  left: min(370px, calc(86vw + 10px));
+  background: rgba(255, 255, 255, 0.15);
   border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
   color: #fff;
-  font-size: 22px;
-  padding: 6px;
+  font-size: 18px;
   z-index: 810;
 }
 
@@ -475,8 +491,8 @@
 }
 
 .drawerHeading {
-  font-size: 17px;
-  padding: 10px 26px 4px;
+  font-size: 15px;
+  padding: 12px 26px 4px;
   margin: 0;
 }
 
@@ -491,18 +507,19 @@
   width: 100%;
   padding: 11px 26px;
   font-size: 14px;
-  color: #111;
+  color: #2b2b30;
   background: none;
   border: none;
   text-align: left;
 }
 
 .drawerLink:hover {
-  background: #eaeded;
+  background: #f6f6f4;
+  color: var(--brand);
 }
 
 .drawerChevron {
-  color: #999;
+  color: var(--border-dark);
   font-size: 18px;
 }
 
@@ -512,7 +529,7 @@
 
 .drawerRule {
   border: none;
-  border-top: 1px solid #e7e7e7;
+  border-top: 1px solid var(--border);
   margin: 10px 0;
 }
 
@@ -530,19 +547,25 @@
   display: none;
   background: none;
   border: none;
-  color: #fff;
-  padding: 6px 8px;
+  color: var(--ink);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.mobileHamburger:hover {
+  background: #f4f4f2;
 }
 
 .searchMobile {
   display: none;
-  padding: 0 10px 8px;
+  padding: 0 12px 10px;
   background: var(--header-bg);
 }
 
 .deliverMobile {
   display: none;
-  background: #37475a;
+  border-top: 1px solid var(--border);
+  background: #fafaf9;
 }
 
 .deliverMobileBtn {
@@ -552,9 +575,9 @@
   width: 100%;
   background: none;
   border: none;
-  color: #fff;
-  font-size: 13px;
-  padding: 8px 14px;
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  padding: 8px 16px;
 }
 
 @media (max-width: 1099px) {
@@ -565,9 +588,14 @@
 }
 
 @media (max-width: 767px) {
+  /* The full three-row header is too tall to pin on small screens */
+  .header {
+    position: static;
+  }
+
   .topBar {
-    padding: 4px 6px;
-    align-items: center;
+    padding: 8px 10px;
+    gap: 4px;
   }
 
   .mobileHamburger {
@@ -586,9 +614,6 @@
 
   .searchMobile {
     display: block;
-    position: sticky;
-    top: 0;
-    z-index: 250;
   }
 
   .deliverMobile {
@@ -596,10 +621,14 @@
   }
 
   .logoText {
-    font-size: 20px;
+    font-size: 19px;
   }
 
   .navAll {
+    display: none;
+  }
+
+  .cartLabel {
     display: none;
   }
 }

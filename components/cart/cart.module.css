@@ -23,7 +23,7 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  border-bottom: 1px solid #e7e7e7;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 10px;
 }
 
@@ -45,7 +45,7 @@
   grid-template-columns: 150px minmax(0, 1fr) auto;
   gap: 16px;
   padding: 16px 0;
-  border-bottom: 1px solid #e7e7e7;
+  border-bottom: 1px solid var(--border);
 }
 
 .itemImage img {
@@ -145,7 +145,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
-  border: 1px solid #e7e7e7;
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 12px;
 }
@@ -178,7 +178,7 @@
 
 .shippingNote {
   font-size: 13px;
-  border-bottom: 1px solid #e7e7e7;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 12px;
 }
 

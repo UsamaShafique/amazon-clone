@@ -3,7 +3,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 14px;
+  font-size: 13.5px;
 }
 
 .ratingMd {
@@ -11,19 +11,19 @@
 }
 
 .ratingValue {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .stars {
   position: relative;
   display: inline-block;
   line-height: 1;
-  font-size: 1.15em;
+  font-size: 1.05em;
   letter-spacing: 1px;
 }
 
 .starsBase {
-  color: #d5d9d9;
+  color: #e4e4e7;
 }
 
 .starsFill {
@@ -35,7 +35,7 @@
 }
 
 .ratingCount {
-  color: var(--link);
+  color: var(--text-secondary);
   font-size: 0.95em;
 }
 
@@ -49,92 +49,78 @@
 
 .price {
   color: var(--price);
-  font-weight: 500;
-  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   white-space: nowrap;
 }
 
-.priceSymbol,
-.priceFraction {
-  font-size: 0.55em;
-  position: relative;
-  top: -0.55em;
+.price-sm .price {
+  font-size: 16px;
 }
 
-.price-sm .priceWhole {
-  font-size: 18px;
+.price-md .price {
+  font-size: 19px;
 }
 
-.price-md .priceWhole {
-  font-size: 22px;
-}
-
-.price-lg .priceWhole {
+.price-lg .price {
   font-size: 28px;
-}
-
-.price-sm,
-.price-md,
-.price-lg {
-  align-items: baseline;
-}
-
-.priceWhole {
-  font-size: 22px;
 }
 
 .listPrice {
   color: var(--text-secondary);
-  font-size: 12.5px;
+  font-size: 0.8em;
+  font-weight: 400;
 }
 
 .discountBadge {
-  background: var(--deal-red);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 3px 7px;
-  border-radius: 3px;
+  background: #fee2e2;
+  color: var(--deal-red);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+  align-self: center;
 }
 
 /* ── Badges ─────────────────────────────────────────────────── */
 .badge {
   display: inline-block;
-  font-size: 11.5px;
-  font-weight: 600;
-  padding: 3px 8px;
-  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 3px 9px;
+  border-radius: 100px;
   color: #fff;
   white-space: nowrap;
 }
 
 .badge-bestseller {
-  background: #e67a00;
+  background: var(--ink);
 }
 
 .badge-choice {
-  background: #232f3e;
-}
-
-.badge-choice::after {
-  content: "";
+  background: #ecfdf5;
+  color: #047857;
 }
 
 .badge-deal {
-  background: var(--deal-red);
+  background: #fee2e2;
+  color: var(--deal-red);
 }
 
 .badge-new {
-  background: var(--link);
+  background: #eef2ff;
+  color: #4f46e5;
 }
 
 .badge-limited {
-  background: #7c3aed;
+  background: #fef3c7;
+  color: #b45309;
 }
 
 /* ── Breadcrumb ─────────────────────────────────────────────── */
 .breadcrumb {
-  padding: 12px 0 4px;
+  padding: 14px 0 4px;
 }
 
 .breadcrumbList {
@@ -147,16 +133,16 @@
 }
 
 .breadcrumbSep {
-  color: var(--text-secondary);
+  color: var(--border-dark);
 }
 
 .breadcrumbLink:hover {
-  color: var(--link-hover);
+  color: var(--ink);
   text-decoration: underline;
 }
 
 .breadcrumbCurrent {
-  color: var(--price-red);
+  color: var(--ink);
   font-weight: 600;
 }
 
@@ -178,16 +164,17 @@
 
 .pageBtn {
   min-width: 40px;
-  padding: 8px 12px;
+  padding: 8px 13px;
   text-align: center;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 100px;
   background: #fff;
-  font-size: 14px;
+  font-size: 13.5px;
+  font-weight: 500;
 }
 
 .pageBtn:hover {
-  border-color: var(--text);
+  border-color: var(--ink);
 }
 
 .pageArrow {
@@ -195,7 +182,9 @@
 }
 
 .pageCurrent {
-  border-color: var(--text);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
   font-weight: 700;
   pointer-events: none;
 }
@@ -203,7 +192,7 @@
 .pageDisabled {
   color: var(--text-secondary);
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .pageEllipsis {
@@ -214,14 +203,15 @@
 /* ── Empty state ────────────────────────────────────────────── */
 .empty {
   background: #fff;
-  border-radius: var(--radius);
-  padding: 56px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 64px 24px;
   text-align: center;
 }
 
 .emptyEmoji {
-  font-size: 56px;
-  margin-bottom: 12px;
+  font-size: 54px;
+  margin-bottom: 14px;
 }
 
 .emptyTitle {
@@ -232,7 +222,7 @@
 .emptyBody {
   color: var(--text-secondary);
   max-width: 440px;
-  margin: 0 auto 18px;
+  margin: 0 auto 20px;
 }
 
 .emptyAction {
@@ -245,7 +235,7 @@
 /* ── Skeleton ───────────────────────────────────────────────── */
 .skeleton {
   display: block;
-  background: linear-gradient(90deg, #e9ecec 25%, #f5f6f6 50%, #e9ecec 75%);
+  background: linear-gradient(90deg, #ececea 25%, #f6f6f4 50%, #ececea 75%);
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite;
   border-radius: var(--radius-sm);
@@ -260,6 +250,7 @@
   flex-direction: column;
   gap: 10px;
   background: #fff;
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 16px;
 }

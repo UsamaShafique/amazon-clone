@@ -157,7 +157,7 @@
 
 .optionSelected {
   border-color: var(--btn-orange);
-  background: #fff8ec;
+  background: var(--brand-soft);
 }
 
 .optionBody {
@@ -196,7 +196,7 @@
 
 .summaryRows {
   font-size: 13.5px;
-  border-bottom: 1px solid #e7e7e7;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 10px;
   margin-bottom: 10px;
 }

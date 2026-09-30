@@ -4,7 +4,7 @@
 
 .select {
   appearance: auto;
-  background: #f0f2f2;
+  background: #f4f4f2;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: 0 2px 5px rgba(15, 17, 17, 0.06);

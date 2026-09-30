@@ -1,24 +1,27 @@
 .footer {
-  margin-top: 32px;
+  margin-top: 40px;
   color: #fff;
 }
 
 .backToTop {
   width: 100%;
-  background: #37475a;
-  color: #fff;
+  background: #fff;
+  color: var(--text-secondary);
   border: none;
-  font-size: 13.5px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 600;
   padding: 15px;
 }
 
 .backToTop:hover {
-  background: #485769;
+  color: var(--ink);
+  background: #fafaf9;
 }
 
 .columnsWrap {
-  background: var(--header-bg-light);
-  padding: 40px 16px;
+  background: #1c1c1f;
+  padding: 48px 20px;
 }
 
 .columns {
@@ -26,46 +29,49 @@
   margin-inline: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 28px;
 }
 
 .heading {
-  font-size: 16px;
-  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #a8a8b0;
+  margin-bottom: 14px;
 }
 
 .list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .footerLink {
-  color: #ddd;
+  color: #e6e6e9;
   font-size: 13.5px;
 }
 
 .footerLink:hover {
-  text-decoration: underline;
-  color: #fff;
+  color: var(--brand);
 }
 
 .bottom {
-  background: var(--header-bg);
-  padding: 26px 16px 34px;
+  background: #121214;
+  padding: 26px 16px 36px;
   text-align: center;
 }
 
 .brand {
   font-size: 20px;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.03em;
   margin-bottom: 10px;
 }
 
 .legal {
-  color: #999;
+  color: #85858d;
   font-size: 12px;
   max-width: 640px;
   margin: 0 auto;
